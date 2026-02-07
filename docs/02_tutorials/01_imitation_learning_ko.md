@@ -93,9 +93,7 @@ lerobot-teleoperate \
     --robot.type=so101_follower \
     --robot.port=/dev/follower_arm_1 \
     --robot.id=my_so101_follower_1 \
-    --robot.cameras="{ \
-      front: {type: opencv, index_or_path: /dev/follower_cam_1, width: 640, height: 480, fps: 30, fourcc: MJPG} \
-    }" \
+    --robot.cameras='{"front":{"type":"opencv","index_or_path":"/dev/follower_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"}}' \
     --teleop.type=so101_leader \
     --teleop.port=/dev/leader_arm_1 \
     --teleop.id=my_so101_leader_1 \
@@ -111,10 +109,7 @@ lerobot-teleoperate \
     --robot.type=so101_follower \
     --robot.port=/dev/follower_arm_1 \
     --robot.id=my_so101_follower_1 \
-    --robot.cameras="{ \
-      top: {type: opencv, index_or_path: /dev/top_cam_1, width: 640, height: 480, fps: 30, fourcc: MJPG}, \
-      front: {type: opencv, index_or_path: /dev/follower_cam_1, width: 640, height: 480, fps: 30, fourcc: MJPG} \
-    }" \
+    --robot.cameras='{"top":{"type":"opencv","index_or_path":"/dev/top_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"},"front":{"type":"opencv","index_or_path":"/dev/follower_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"}}' \
     --teleop.type=so101_leader \
     --teleop.port=/dev/leader_arm_1 \
     --teleop.id=my_so101_leader_1 \
@@ -182,10 +177,7 @@ lerobot-record \
     --robot.type=so101_follower \
     --robot.port=/dev/follower_arm_1 \
     --robot.id=my_so101_follower_1 \
-    --robot.cameras="{ \
-      top: {type: opencv, index_or_path: /dev/top_cam_1, width: 640, height: 480, fps: 30, fourcc: MJPG}, \
-      front: {type: opencv, index_or_path: /dev/follower_cam_1, width: 640, height: 480, fps: 30, fourcc: MJPG} \
-    }" \
+    --robot.cameras='{"top":{"type":"opencv","index_or_path":"/dev/top_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"},"front":{"type":"opencv","index_or_path":"/dev/follower_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"}}' \
     --teleop.type=so101_leader \
     --teleop.port=/dev/leader_arm_1 \
     --teleop.id=my_so101_leader_1 \
@@ -216,10 +208,7 @@ lerobot-record \
     --robot.type=so101_follower \
     --robot.port=/dev/follower_arm_1 \
     --robot.id=my_so101_follower_1 \
-    --robot.cameras="{ \
-      top: {type: opencv, index_or_path: /dev/top_cam_1, width: 640, height: 480, fps: 30, fourcc: MJPG}, \
-      front: {type: opencv, index_or_path: /dev/follower_cam_1, width: 640, height: 480, fps: 30, fourcc: MJPG} \
-    }" \
+    --robot.cameras='{"top":{"type":"opencv","index_or_path":"/dev/top_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"},"front":{"type":"opencv","index_or_path":"/dev/follower_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"}}' \
     --teleop.type=so101_leader \
     --teleop.port=/dev/leader_arm_1 \
     --teleop.id=my_so101_leader_1 \
@@ -337,24 +326,24 @@ robot.disconnect()
 
 ```bash
 lerobot-train \
-  --dataset.repo_id=${HF_USER}/so101_test \
+  --dataset.repo_id=jinhyuk2me/so101_test \
   --dataset.video_backend=pyav \
   --policy.type=act \
-  --output_dir=outputs/train/act_so101_test \
-  --job_name=act_so101_test \
+  --output_dir=outputs/train/act_my-first-lerobot \
+  --job_name=act_my-first-lerobot \
   --policy.device=cuda \
   --wandb.enable=true \
-  --policy.repo_id=${HF_USER}/my_policy
+  --policy.repo_id=jinhyuk2me/act_my-first-lerobot
 ```
 
 명령을 설명하면 다음과 같습니다:
 
-1. `--dataset.repo_id=${HF_USER}/so101_test`로 데이터셋을 인자로 제공했습니다.
+1. `--dataset.repo_id=jinhyuk2me/so101_test`로 데이터셋을 인자로 제공했습니다.
 2. `policy.type=act`로 정책을 제공했습니다. 이는 [`configuration_act.py`](https://github.com/huggingface/lerobot/blob/main/src/lerobot/policies/act/configuration_act.py)의 설정을 불러옵니다. 특히 이 정책은 데이터셋에 저장된 로봇의 모터 상태, 모터 액션, 카메라(예: `laptop`, `phone`)의 개수에 자동으로 맞춥니다.
 3. Nvidia GPU에서 학습하므로 `policy.device=cuda`를 제공했지만, Apple silicon에서는 `policy.device=mps`를 사용할 수 있습니다.
 4. 학습 플롯 시각화를 위해 [Weights and Biases](https://docs.wandb.ai/quickstart)를 사용하려고 `wandb.enable=true`를 제공했습니다. 이는 선택사항이며, 사용하려면 `wandb login`으로 로그인해야 합니다.
 
-학습은 몇 시간 걸릴 수 있습니다. 체크포인트는 `outputs/train/act_so101_test/checkpoints`에서 찾을 수 있습니다.
+학습은 몇 시간 걸릴 수 있습니다. 체크포인트는 `outputs/train/act_my-first-lerobot/checkpoints`에서 찾을 수 있습니다.
 
 ### 자주 쓰는 추가 옵션
 
@@ -425,16 +414,20 @@ lerobot-record \
     --robot.type=so101_follower \
     --robot.port=/dev/follower_arm_1 \
     --robot.id=my_so101_follower_1 \
-    --robot.cameras='{ \
-      "top": {"type": "opencv", "index_or_path": "/dev/top_cam_1", "width": 640, "height": 480, "fps": 30, "fourcc": "MJPG"}, \
-      "front": {"type": "opencv", "index_or_path": "/dev/follower_cam_1", "width": 640, "height": 480, "fps": 30, "fourcc": "MJPG"} \
-    }' \
-    --policy.path=${HF_USER}/my_policy \
+    --robot.cameras='{"top":{"type":"opencv","index_or_path":"/dev/top_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"},"front":{"type":"opencv","index_or_path":"/dev/follower_cam_1","width":640,"height":480,"fps":30,"fourcc":"MJPG"}}' \
+    --policy.path=/home/jinhyuk2me/dev_ws/mt_lerobot/outputs/train/act_my-first-lerobot/checkpoints/last/pretrained_model \
+    --teleop.type=so101_leader \
+    --teleop.port=/dev/leader_arm_1 \
+    --teleop.id=my_so101_leader_1 \
     --display_data=true \
-    --dataset.repo_id=${HF_USER}/eval_my_policy \
+    --dataset.repo_id=jinhyuk2me/eval_act_my-first-lerobot \
     --dataset.num_episodes=10 \
     --dataset.single_task="Pick up the block"
 ```
+
+> 참고: 리셋 구간(`--dataset.reset_time_s`)에 정책/텔레옵이 없으면  
+> "No policy or teleoperator provided..." 경고가 반복될 수 있습니다.  
+> 리셋 때 리더로 자세를 맞추려면 `--teleop.*` 옵션을 추가하세요.
 
 ```python
 
