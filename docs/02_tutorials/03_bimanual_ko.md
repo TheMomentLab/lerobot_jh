@@ -14,6 +14,24 @@
 - `TOP_CAM` 예: `3` 또는 `/dev/top_cam`
 - `FRONT_CAM` 예: `4` 또는 `/dev/front_cam`
 
+**Teleoperate (No Record)**
+데이터 저장 없이 로봇 동작을 테스트하거나 카메라 화면을 확인할 때 사용합니다.
+
+```bash
+lerobot-teleoperate \
+  --robot.type=bi_so_follower \
+  --robot.left_arm_config.port=LEFT_FOLLOWER_PORT \
+  --robot.right_arm_config.port=RIGHT_FOLLOWER_PORT \
+  --robot.id=bimanual_follower \
+  --robot.left_arm_config.cameras='{"wrist":{"type":"opencv","index_or_path":LEFT_CAM_WRIST,"width":640,"height":480,"fps":30},"top":{"type":"opencv","index_or_path":TOP_CAM,"width":640,"height":480,"fps":30}}' \
+  --robot.right_arm_config.cameras='{"wrist":{"type":"opencv","index_or_path":RIGHT_CAM_WRIST,"width":640,"height":480,"fps":30},"front":{"type":"opencv","index_or_path":FRONT_CAM,"width":640,"height":480,"fps":30}}' \
+  --teleop.type=bi_so_leader \
+  --teleop.left_arm_config.port=LEFT_LEADER_PORT \
+  --teleop.right_arm_config.port=RIGHT_LEADER_PORT \
+  --teleop.id=bimanual_leader \
+  --display_data=true
+```
+
 **Record (Teleop)**
 양팔 데이터 기록은 teleop이 사실상 필수입니다. 아래 명령으로 데이터셋을 생성합니다.
 
