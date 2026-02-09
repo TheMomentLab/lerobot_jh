@@ -36,3 +36,13 @@ ENV/
 # Project specific
 reference/
 outputs/
+
+# dataset
+datasets/
+
+# programs
+programs/
+
+# udev rules
+99-lerobot.rules
+datasets/
