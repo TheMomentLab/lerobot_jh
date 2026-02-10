@@ -1,21 +1,16 @@
-# MomentLab LeRobot Hackathon
+# 한성대X로보시지 제1회 Physical AI Hackathon
 
-
-본 프로젝트는 **제1회 Physical AI 해커톤의 1종목 (Task 1)** 에 참여하였습니다.
+<a href="https://huggingface.co/jinhyuk2me/act_hackathon_roboseasy_final">
+  <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-ACT%20Model-blue" alt="Hugging Face Model Badge">
+</a>
 
 ### 📝 1종목 미션 (Task 1 Mission)
-**"한쪽 팔로 공을 집어 반대쪽 팔의 그리퍼로 전달한 뒤, 색상별로 수납함에 정확히 분류하는 미션"**
+> **"한쪽 팔로 공을 집어 반대쪽 팔의 그리퍼로 전달한 뒤, 색상별로 수납함에 정확히 분류"**
 
 - **주요 동작**:
   1. **Pick & Place**: 한쪽 팔을 이용해 테이블 위의 공을 집습니다.
   2. **Transfer**: 집은 공을 반대편 팔의 그리퍼로 안정적으로 전달합니다.
   3. **Classification**: 전달받은 공의 색상을 인식하여 지정된 수납함에 정확히 분류합니다.
-
-### 🤖 사용 모델 (Model)
-<a href="https://huggingface.co/jinhyuk2me/act_hackathon_roboseasy_final">
-  <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-ACT%20Model-blue" alt="Hugging Face Model Badge">
-</a>
-
 
 <div align="center">
   <table>
@@ -26,7 +21,7 @@
       </td>
       <td align="center">
         <img src="assets/teleop.jpg" height="200"><br>
-        <sub>Teleoperation Setup</sub>
+        <sub>Teleoperation</sub>
       </td>
       <td align="center">
         <img src="assets/demo.gif" height="200"><br>
